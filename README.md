@@ -24,12 +24,12 @@ Setup recipesearchapi (available as another repository on my github)**
 
 # Module breakdown
 
- report-module/ - contains code for reporting 
- search-module/ - contains code for retrieving recipe information from a web service
- user-accounts-module/ - contains code for managing user accounts
- utility-module/ - contains helper classes for this application
- web-module/ - contains the web application
- simplefoodsolutions-ear - uses all the above modules to create the enterprise application
+- report-module/ - contains code for reporting 
+- search-module/ - contains code for retrieving recipe information from a web service
+- user-accounts-module/ - contains code for managing user accounts
+- utility-module/ - contains helper classes for this application
+- web-module/ - contains the web application
+- simplefoodsolutions-ear - uses all the above modules to create the enterprise application
 
 
 
