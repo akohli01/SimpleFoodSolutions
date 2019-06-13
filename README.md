@@ -14,8 +14,8 @@ This is a enterprise application for a fictional company called Simple Food Solu
 6. Apache Commons
 
 # To get started 
-** Prerequisite **
-** Setup recipesearchapi (available as another repository on my github)**
+**Prerequisite
+Setup recipesearchapi (available as another repository on my github)**
 1. Use Intellij IDEA as the preferred IDE
 2. Import as a Maven project
 3. Download Tomcat EE and configure with Intellij
