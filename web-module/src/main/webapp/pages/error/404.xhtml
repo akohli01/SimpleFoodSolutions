@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="../include/error-template.xhtml">
+    <ui:param name="backgroundImage" value="page-not-found-background-image"/>
+    <ui:param name="pageTitle" value="Page not Found"/>
+    <ui:define name="body">
+        <div class="container-fluid min-vh-100">
+            <a href="#{request.contextPath}/pages/index.xhtml">
+                <h4>Navigate to Home page</h4>
+            </a>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

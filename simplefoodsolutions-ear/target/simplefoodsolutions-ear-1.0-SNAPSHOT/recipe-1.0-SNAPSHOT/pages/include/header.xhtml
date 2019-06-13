@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition>
+    <div class="container-fluid">
+        <div class="navbar navbar-expand-lg navbar-light header-background-color row " id="mainNavBar">
+            <div class="col-2">
+                <a href="#{request.contextPath}/pages/index.xhtml">
+                    <h:graphicImage name="images/brand.png" alt="Simple Food Solutions"/>
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"/>
+            </button>
+            <div class="col-lg-10 col-12 mt-3">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="col-lg-8 col-sm">
+                        <h:form id="headerSearchForm" rendered="#{view.viewId != '/pages/index.xhtml'}">
+                            <div class="input-group">
+                                <h:inputText styleClass="rounded form-control"
+                                             pt:placeholder="Search for a recipe"
+                                             value="#{searchBean.recipeSearchValue}"/>
+                                <div class="input-group-append">
+                                    <h:commandButton
+                                            action="#{searchBeanController.navigateToSearchPage(searchBean.recipeSearchValue)}"
+                                            value="Search"
+                                            styleClass="btn btn-primary">
+                                    </h:commandButton>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                    <div class="col-lg-4 col-sm">
+                        <ul class="navbar-nav justify-content-center">
+                            <li class="nav-item mr-lg-5" id="main-nav-login">
+                                <h:link outcome="login.xhtml" rendered="#{empty user}">
+                                    <i class="fa fa-user fa-2x"/>
+                                    <span>Login</span>
+                                </h:link>
+                            </li>
+                            <li class="nav-item" id="main-nav-register">
+                                <h:link outcome="register.xhtml" rendered="#{empty user}">
+                                    <i class="fa fa-user-plus fa-2x "/>
+                                    <span>Register</span>
+                                </h:link>
+                            </li>
+                            <h:panelGroup styleClass="nav-item dropdown btn-group" id="main-nav-user-success"
+                                          rendered="#{not empty user}">
+                                <button class="btn bg-transparent dropdown-toggle" type="button" id="userOptions"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user text-success fa-2x "/>
+                                    <span>Hello #{user.username}</span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="userOptions">
+                                    <h:outputLink styleClass="dropdown-item"
+                                                  value="#{request.contextPath}/pages/user-specific/user-profile.xhtml">
+                                        My Profile
+                                    </h:outputLink>
+                                    <h:outputLink styleClass="dropdown-item"
+                                                  value="#{request.contextPath}/pages/user-specific/my-recipes.xhtml">My
+                                        Recipes
+                                    </h:outputLink>
+                                    <h:outputLink styleClass="dropdown-item"
+                                                  rendered="#{roleSetHandler.convertRoleSetToString(user.roles).contains('Administrator')}"
+                                                  value="#{request.contextPath}/pages/user-specific/administrator/report.xhtml">
+                                        Reports
+                                    </h:outputLink>
+                                    <h:form>
+                                        <h:commandLink action="#{loginBeanController.logout}" value="Logout"
+                                                       styleClass="dropdown-item"/>
+                                    </h:form>
+                                </div>
+                            </h:panelGroup>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:composition>
+</html>

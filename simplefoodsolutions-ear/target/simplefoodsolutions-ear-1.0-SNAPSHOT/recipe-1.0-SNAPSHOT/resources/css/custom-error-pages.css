@@ -1,0 +1,18 @@
+/**********404 error**********/
+.page-not-found-background-image
+{
+    background-image: url("#{resource['images/404-error.png']}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/**********500 error**********/
+.server-error-background-image
+{
+    background-image: url("#{resource['images/500-error.png']}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

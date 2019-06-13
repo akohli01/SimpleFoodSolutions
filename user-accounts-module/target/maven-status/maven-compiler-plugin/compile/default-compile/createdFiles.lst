@@ -1,0 +1,6 @@
+online\simplefoodsolutions\userAccounts\ejb\Register.class
+online\simplefoodsolutions\userAccounts\entity\User.class
+online\simplefoodsolutions\userAccounts\utility\SessionUtility.class
+online\simplefoodsolutions\userAccounts\dao\UserDAO.class
+online\simplefoodsolutions\userAccounts\ejb\RegisterImplementation.class
+online\simplefoodsolutions\userAccounts\dao\UserDAOImplementation.class

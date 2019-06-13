@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../include/template.xhtml">
+    <ui:param name="pageTitle" value="Profile"/>
+    <ui:define name="metadata">
+        <f:metadata>
+        </f:metadata>
+    </ui:define>
+    <ui:define name="body">
+        <div class="container min-vh-100 bg-white">
+            <div class="row mt-1">
+                <div class="col-12 text-center">
+                    <h2>My Profile</h2>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-12 text-center">
+                    <p:graphicImage value="#{profilePictureBeanController.profilePictureBean.imageFromDatabase}"
+                                    cache="false"/>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-12 text-center">
+                    <h:form enctype="multipart/form-data">
+                        <p:messages showDetail="true"/>
+                        <p:fileUpload
+                                value="#{profilePictureBeanController.profilePictureBean.profilePicture}"
+                                label="Change Profile Picture"
+                                mode="simple"
+                                skinSimple="true"/>
+                        <p:commandButton value="Submit" ajax="false"
+                                         actionListener="#{profilePictureBeanController
+                                         .saveProfilePicture(user.userID)}"/>
+                    </h:form>
+                </div>
+            </div>
+            <div class="row mt-3 mt-lg-5">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="row" class="h3">Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>User Identification Number</td>
+                        <td>#{user.userID}</td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td>#{user.firstName}</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>#{user.lastName}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>#{user.email}</td>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td>#{user.username}</td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>Not shown (can lead to a security vulnerability)</td>
+                    </tr>
+                    <tr>
+                        <td>Member since</td>
+                        <td>#{user.createTime}</td>
+                    </tr>
+                    <tr>
+                        <td>Roles</td>
+                        <td>#{roleSetHandler.convertRoleSetToString(user.roles)}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row mt-3 mt-lg-5">
+                <h:form>
+                    <p:growl id="deletemessage" showDetail="true"/>
+
+                    <p:commandButton value="Delete Account" action="#{deleteBeanController.confirmDelete(user.userID)}"
+                                     update="deletemessage" styleClass="btn-danger">
+                        <p:confirm header="Confirmation" message="Are you sure? This action can not be undone"
+                                   icon="pi pi-exclamation-triangle"/>
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes"
+                                         icon="pi pi-check"/>
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+                    </p:confirmDialog>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

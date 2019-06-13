@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="include/template.xhtml">
+    <ui:param name="backgroundImage" value="index-background-image"/>
+    <ui:param name="pageTitle" value="Home"/>
+    <ui:define name="body">
+        <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+            <h:form styleClass="row w-100">
+                <div class="input-group">
+                    <h:inputText styleClass="rounded form-control"
+                                 pt:placeholder="Search for a recipe"
+                                 id="indexSearchBox" value="#{searchBean.recipeSearchValue}">
+                    </h:inputText>
+                    <div class="input-group-append">
+                        <h:commandButton
+                                action="#{searchBeanController.navigateToSearchPage(searchBean.recipeSearchValue)}"
+                                value="Search"
+                                styleClass="btn btn-primary">
+                        </h:commandButton>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+        <h:outputScript name="js/custom-index.js" target="body"/>
+    </ui:define>
+</ui:composition>
+</html>

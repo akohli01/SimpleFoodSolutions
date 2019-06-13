@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="include/template.xhtml">
+    <ui:param name="pageTitle" value="Result"/>
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewAction action="#{recipeBeanController.initializeRecipeBeanByID(param['id'])}"/>
+        </f:metadata>
+    </ui:define>
+    <ui:define name="body">
+        <div class="container mt-2 p-3 min-vh-100 bg-light">
+            <h:outputText value="#{recipeBeanController.recipeBean.description}" escape="false"/>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

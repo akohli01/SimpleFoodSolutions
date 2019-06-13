@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<ui:composition template="../../include/template.xhtml">
+    <ui:param name="pageTitle" value="Report"/>
+    <ui:define name="body">
+        <div class="container min-vh-100 bg-white">
+            <div class="row mt-1">
+                <div class="col-12 text-center">
+                    <h2>Reports</h2>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-12 ">
+                    <h:form>
+                        <p:outputLabel for="reportList" value="Select a report:"/>
+                        <p:selectOneListbox id="reportList" value="#{reportBeanController.reportChoice}">
+                            <f:selectItem itemLabel="Registered Users Breakdown"
+                                          itemValue="registeredUsersReport"/>
+                            <f:selectItem itemLabel="Number of recipes in web service"
+                                          itemValue="numberOfRecipesReport"/>
+                        </p:selectOneListbox>
+                        <h:commandButton value="Get Report" icon="pi pi-check"
+                                         action="#{reportBeanController.whichReportToGenerate}"/>
+                    </h:form>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <h:panelGroup class="col-12 overflow-x-auto justify-content-center"
+                              rendered="#{reportBeanController.reportChoice eq 'registeredUsersReport'}"
+                              layout="block">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h4>Registered Users Report</h4><br/>
+                            <p>Report generated on #{currentDate}</p>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <tr>
+                            <ui:repeat value="#{reportBeanController.userReportBean.columns}" var="column">
+                                <th>#{column}</th>
+                            </ui:repeat>
+                        </tr>
+                        <ui:repeat value="#{reportBeanController.userReportBean.users}" var="user">
+                            <tr>
+                                <td>#{user.userID}</td>
+                                <td>#{user.firstName}</td>
+                                <td>#{user.lastName}</td>
+                                <td>#{user.username}</td>
+                                <td>#{user.email}</td>
+                                <td>#{user.createTime}</td>
+                            </tr>
+                        </ui:repeat>
+                    </table>
+                </h:panelGroup>
+                <h:panelGroup class="col-12 overflow-x-auto justify-content-center"
+                              rendered="#{reportBeanController.reportChoice eq 'numberOfRecipesReport'}"
+                              layout="block">
+                    <div class="col-12 text-center">
+                        <h4>Number of Recipes Report</h4><br/>
+                        <p>Report generated on #{currentDate}</p>
+                    </div>
+                    <table class="table table-striped">
+                        <tr>
+                            <ui:repeat value="#{reportBeanController.recipeReportBean.columns}" var="column">
+                                <th>#{column}</th>
+                            </ui:repeat>
+                        </tr>
+                        <tr>
+                            <td>#{reportBeanController.recipeReportBean.numberOfRecipes}</td>
+                        </tr>
+                    </table>
+                </h:panelGroup>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

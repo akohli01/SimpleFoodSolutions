@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="include/template.xhtml">
+    <ui:param name="pageTitle" value="Register"/>
+    <ui:define name="body">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <h:form styleClass="w-100 p-5 register-form-background-image" id="registerForm">
+                        <p:messages id="messages" showSummary="true" closable="true">
+                            <p:autoUpdate/>
+                        </p:messages>
+                        <h2 class="text-center text-white">Register</h2>
+                        <div class="input-group row p-3 justify-content-around">
+                            <h:inputText styleClass="rounded form-control col-4" id="firstName"
+                                         pt:placeholder="First Name" required="true"
+                                         requiredMessage="Please enter First Name" value="#{registerBean.firstName}">
+                            </h:inputText>
+                            <h:inputText styleClass="rounded form-control col-4" id="lastName"
+                                         pt:placeholder="Last Name" required="true"
+                                         requiredMessage="Please enter Last Name" value="#{registerBean.lastName}"/>
+                        </div>
+                        <div class="input-group row p-3">
+                            <h:inputText styleClass="rounded form-control" id="userName"
+                                         pt:placeholder="Username" required="true"
+                                         requiredMessage="Please enter Username" value="#{registerBean.username}">
+                                <f:validator validatorId="UsernameValidator" binding="#{usernameValidator}"/>
+                            </h:inputText>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-user"/></span>
+                            </div>
+                        </div>
+                        <div class="input-group row p-3">
+                            <h:inputText styleClass="rounded form-control" id="email"
+                                         pt:placeholder="Email" required="true"
+                                         requiredMessage="Please enter Email" value="#{registerBean.email}">
+                                <f:validator validatorId="EmailValidator" binding="#{emailValidator}"/>
+                                <f:attribute name="confirmEmail" value="#{confirmEmail}"/>
+                                <f:validator validatorId="EmailValidator" binding="#{emailValidator}"/>
+                            </h:inputText>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-envelope"/></span>
+                            </div>
+                        </div>
+                        <div class="input-group row p-3">
+                            <h:inputText styleClass="rounded form-control" id="confirmEmail"
+                                         pt:placeholder="Confirm email" required="true" binding="#{confirmEmail}"
+                                         requiredMessage="Please confirm Email" value="#{registerBean.confirmEmail}"/>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-envelope"/></span>
+                            </div>
+                        </div>
+                        <div class="input-group row p-3">
+                            <h:inputSecret styleClass="rounded form-control" id="password"
+                                           pt:placeholder="Password" required="true"
+                                           requiredMessage="Please enter Password" value="#{registerBean.password}">
+                                <f:validator validatorId="PasswordValidator"/>
+                                <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
+                            </h:inputSecret>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-key"/></span>
+                            </div>
+                        </div>
+                        <div class="input-group row p-3">
+                            <h:inputSecret styleClass="rounded form-control" id="confirmPassword"
+                                           pt:placeholder="Confirm Password" required="true"
+                                           binding="#{confirmPassword}"
+                                           requiredMessage="Please confirm Password"
+                                           value="#{registerBean.confirmPassword}"/>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-key"/></span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <h:commandButton value="Register" styleClass="btn btn-light"
+                                             action="#{registerBeanController.registerUser}">
+                                <f:ajax execute="@all" render="@form"/>
+                            </h:commandButton>
+                        </div>
+                        <div class="row pt-3">
+                            <div class="col-12">
+                                <hr class="bg-white"/>
+                            </div>
+                            <div class="col-12 text-center">
+                                <p class="text-white">Already a member?</p>
+                                <a href="#{request.contextPath}/pages/login.xhtml" class="btn btn-light">
+                                    Login
+                                </a>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

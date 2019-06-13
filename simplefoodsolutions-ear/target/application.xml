@@ -1,0 +1,26 @@
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_7.xsd"
+             version="7">
+    <application-name>myapp</application-name>
+    <description>This artifact will be deployed into production</description>
+    <display-name>simplefoodsolutions-ear</display-name>
+    <module>
+        <web>
+            <web-uri>recipe-1.0-SNAPSHOT.war</web-uri>
+            <context-root>/recipe</context-root>
+        </web>
+    </module>
+    <module>
+        <ejb>searchModule-1.0-SNAPSHOT.jar</ejb>
+    </module>
+    <module>
+        <ejb>userAccountsModule-1.0-SNAPSHOT.jar</ejb>
+    </module>
+    <module>
+        <ejb>report-1.0-SNAPSHOT.jar</ejb>
+    </module>
+    <module>
+        <ejb>utility-1.0-SNAPSHOT.jar</ejb>
+    </module>
+    <library-directory>lib</library-directory>
+</application>

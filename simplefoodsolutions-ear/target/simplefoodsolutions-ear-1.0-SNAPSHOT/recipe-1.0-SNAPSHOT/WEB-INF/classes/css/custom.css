@@ -1,0 +1,72 @@
+/**********Global**********/
+input[type="text"], textarea
+{
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+}
+
+body
+{
+    background-color: white;
+}
+
+.overflow-x-auto
+{
+    overflow-x: auto;
+}
+
+/**********Header**********/
+
+.header-background-color
+{
+    background-color: #e2fff9;
+}
+
+/**********Header**********/
+
+/* The Overlay (background) */
+.overlay
+{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 50%;
+    top: 50%;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    display: none;
+    transform: translate(-50%, -50%);
+}
+
+/**********Index**********/
+
+.index-background-image
+{
+    background-image: url("#{resource['images/index.jpg']}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/**********Register**********/
+
+.register-form-background-image
+{
+    background-image: url("#{resource['images/register-form-bg-image.jpg']}");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/**********Login**********/
+
+.login-form-background-image
+{
+    background-image: url("#{resource['images/login-form-bg-image.jpg']}");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+

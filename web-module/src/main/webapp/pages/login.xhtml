@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="include/template.xhtml">
+    <ui:param name="pageTitle" value="Login"/>
+    <ui:define name="body">
+        <div class="container min-vh-100 d-flex justify-content-center align-items-center disableElementsContainer">
+            <h:form styleClass="w-100 p-5 login-form-background-image" id="loginForm">
+                <h:message for="loginForm" infoClass="alert alert-success d-block"
+                           errorClass="alert alert-danger d-block"/>
+                <h2 class="text-center text-white">Login</h2>
+                <div class="input-group row p-3">
+                    <!--<p class="text-white text-right col-12">Forgot username?</p>-->
+                    <h:inputText styleClass="rounded form-control col-12"
+                                 pt:placeholder="Username" required="true" id="username"
+                                 requiredMessage="Please enter Username" value="#{loginBean.username}"/>
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fa fa-user"/></span>
+                    </div>
+                </div>
+                <div class="input-group row p-3">
+                    <!--<p class="text-white text-right col-12">Forgot password?</p>-->
+                    <h:inputSecret styleClass="rounded form-control col-12"
+                                   pt:placeholder="Password" required="true" id="password"
+                                   requiredMessage="Please enter Password" value="#{loginBean.password}"/>
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fa fa-key"/></span>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <h:commandButton value="Login" styleClass="btn btn-light"
+                                     action="#{loginBeanController.login}">
+                        <f:ajax execute="@all" render="@form"/>
+                    </h:commandButton>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-12">
+                        <hr class="bg-white"/>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p class="text-white">Not a member?</p>
+                        <a href="#{request.contextPath}/pages/register.xhtml" class="btn btn-light">
+                            Register
+                        </a>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

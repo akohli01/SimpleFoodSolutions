@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="include/template.xhtml">
+    <ui:param name="pageTitle" value="Search"/>
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="searchValue" value="#{searchBean.recipeSearchValue}"/>
+        </f:metadata>
+    </ui:define>
+    <ui:define name="head">
+        <script  type="application/javascript">
+            function onStartRecipeRequest()
+            {
+                var progressloader = document.getElementById("progressOverlay");
+                progressloader.style.display = "block";
+            }
+            function onCompleteRecipeRequest()
+            {
+                var progressloader = document.getElementById("progressOverlay");
+                progressloader.style.display = "none";
+            }
+
+        </script>
+    </ui:define>
+    <ui:define name="body">
+        <div class="container pt-2">
+            <h:panelGroup class="ul" id="recipeList">
+                <ui:repeat value="#{recipeMapBean.recipes}" var="recipe">
+                    <div class="list-group-item list-group-item-action bg-light">
+                        <h:link value="#{recipe.value.title}" outcome="result">
+                            <f:param name="id" value="#{recipe.key}"/>
+                        </h:link>
+                    </div>
+                </ui:repeat>
+            </h:panelGroup>
+        </div>
+        <p:remoteCommand name="loadRecipes"
+                         update="recipeList"
+                         actionListener="#{recipeMapBeanController.populateRecipeMap(searchBean.recipeSearchValue)}"
+                         autoRun="true"
+                         onstart="onStartRecipeRequest()"
+                         oncomplete="onCompleteRecipeRequest()" />
+    </ui:define>
+</ui:composition>
+</html>
