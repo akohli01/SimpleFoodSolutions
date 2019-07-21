@@ -1,5 +1,5 @@
 # Overview
-This is a enterprise application for a fictional company called Simple Food Solutions. The primary functions of this application are to provide reporting, searching for recipes, and management of user accounts. This project uses multiple modules that are packaged into an ear and can be deployed to a application server
+This is a enterprise application for a fictional company called Simple Food Solutions. The primary functions of this application are to provide reporting, searching for recipes, and management of user accounts. This project uses multiple modules that are packaged into an ear and can be deployed to a application server. In addition this project follows the MVC design pattern.
 
 
 # Technologies used
