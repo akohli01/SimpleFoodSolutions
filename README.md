@@ -3,7 +3,7 @@ This is an enterprise application for a fictional company called Simple Food Sol
 
 
 # Technologies used
-1. Java EE
+1. Java EE  
         a. JSF with MyFaces implementation
         b. JSON-B with Jersey implementation
         c. JavaMail
