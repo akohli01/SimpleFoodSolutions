@@ -4,14 +4,13 @@ This is an enterprise application for a fictional company called Simple Food Sol
 
 # Technologies used
 1. Java EE  
-        a. JSF with MyFaces implementation  
-        b. JSON-B with Jersey implementation  
+        a. JSF (MyFaces, Primefaces)  
+        b. JSON-B (Jackson) 
         c. JavaMail  
 2. Hibernate 
 3. MySQL database for storing user account information
 4. JUnit 5
-5. Primefaces
-6. Apache Commons
+5. Apache Commons
 
 # To get started 
 **Prerequisite:
